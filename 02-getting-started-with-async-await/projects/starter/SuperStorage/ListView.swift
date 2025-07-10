@@ -88,6 +88,22 @@ struct ListView: View {
       }, message: {
         Text(lastErrorMessage)
       })
+      .task {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        guard files.isEmpty else { return }
+        do {
+          async let files = try model.availableFiles()
+          async let status = try model.status()
+          let (filesResult, statusResult) = try await (files, status)
+          self.files = filesResult
+          self.status = statusResult
+        } catch {
+          lastErrorMessage = error.localizedDescription
+        }
+        let endTime = CFAbsoluteTimeGetCurrent()
+        let executionTime = endTime - startTime
+        print("Execution time: \(String(format: "%.6f", executionTime)) seconds")
+      }
       .navigationDestination(isPresented: $isDisplayingDownload) {
         DownloadView(file: selected).environmentObject(model)
       }

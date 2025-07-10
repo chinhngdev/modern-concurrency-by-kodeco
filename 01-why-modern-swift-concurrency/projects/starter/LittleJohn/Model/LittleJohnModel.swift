@@ -53,4 +53,10 @@ class LittleJohnModel: ObservableObject {
     configuration.timeoutIntervalForRequest = .infinity
     return URLSession(configuration: configuration)
   }()
+  
+  func availableSymbols() async throws -> [String] {
+    guard let url = URL(string: "http://localhost:8080/littlejohn/symbols") else {
+      throw "The URL could not be created."
+    }
+  }
 }
