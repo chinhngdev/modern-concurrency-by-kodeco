@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:modern-concurrency-by-kodeco}/00-book-server",
+            "name": "Debug Run (00-book-server)",
+            "program": "${workspaceFolder:modern-concurrency-by-kodeco}/00-book-server/.build/debug/Run",
+            "preLaunchTask": "swift: Build Debug Run (00-book-server)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:modern-concurrency-by-kodeco}/00-book-server",
+            "name": "Release Run (00-book-server)",
+            "program": "${workspaceFolder:modern-concurrency-by-kodeco}/00-book-server/.build/release/Run",
+            "preLaunchTask": "swift: Build Release Run (00-book-server)"
+        }
+    ]
+}
